@@ -48,3 +48,4 @@ data_avg <- data %>%
 
 rm(list=setdiff(ls(), c("data", "data_avg")))
 
+write.table(data_avg, 'data_avg.txt', row.names = FALSE)
