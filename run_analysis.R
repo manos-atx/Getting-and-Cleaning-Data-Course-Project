@@ -40,8 +40,11 @@ data <- data %>%
                                                                        ACTIVITY == 5 ~ 'STANDING',
                                                                        ACTIVITY == 6 ~ 'LAYING')))
 
-table(data$ACTIVITY, data$SUBJECT)
-
 data_avg <- data %>%
   group_by(ACTIVITY, SUBJECT) %>%
   summarize(across(where(is.numeric), mean))
+
+# table(data$ACTIVITY, data$SUBJECT)
+
+rm(list=setdiff(ls(), c("data", "data_avg")))
+
