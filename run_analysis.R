@@ -27,6 +27,16 @@ subject <- rbind(subject_train, subject_test)
 data <- cbind(subject, data)
 names(data)[1] <- 'SUBJECT'
 
+names(data) <- gsub("^t", "Time", names(data))
+names(data) <- gsub("^f", "Frequency", names(data))
+names(data) <- gsub("BodyBody", "Body", names(data))
+names(data) <- gsub("Acc", "Accelerometer", names(data))
+names(data) <- gsub("Gyro", "Gyroscope", names(data))
+names(data) <- gsub("Mag", "Magnitude", names(data))
+names(data) <- gsub("-mean\\(\\)", "Mean", names(data))
+names(data) <- gsub("-std\\(\\)", "Std", names(data))
+names(data) <- gsub("-", "", names(data))
+
 activity_labels <- read.table('UCI HAR Dataset/activity_labels.txt')
 
 # use descriptive activity names to name the activities in the data set
